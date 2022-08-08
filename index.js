@@ -75,6 +75,8 @@ md.use(require('markdown-it-anchor'), { tabIndex: false });
     {
         source = source.substring(source.indexOf('\n---\n', 1) + 4);
     }
+    else { source = '\n' + source; }
+
     source = readFileSync(htmlHeader) + source;
     let htm = md.render(source);
 
