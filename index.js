@@ -47,7 +47,7 @@ const puppeteer = require('puppeteer-core');
 const http = require('http');
 const hangersteak = require('hangersteak');
 
-const { highlight } = require('./util');
+const { highlight, slugify } = require('./util');
 
 const md = require("markdown-it")
 ({
@@ -56,7 +56,7 @@ const md = require("markdown-it")
     highlight: highlight
 });
 
-md.use(require('markdown-it-anchor'), { tabIndex: false });
+md.use(require('markdown-it-anchor'), { tabIndex: false, slugify: slugify });
 
 //
 
