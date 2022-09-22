@@ -54,6 +54,7 @@ const md = require("markdown-it")
     linkify: true,
     highlight: (str, lang) =>
     {
+        if (lang == 'jsonc') lang = 'json';
         if (lang && hljs.getLanguage(lang))
         {
           try { return hljs.highlight(str, { language: lang }).value; }
