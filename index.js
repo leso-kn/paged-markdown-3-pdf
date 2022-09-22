@@ -47,21 +47,13 @@ const puppeteer = require('puppeteer-core');
 const http = require('http');
 const hangersteak = require('hangersteak');
 
-const hljs = require('highlight.js');
+const { highlight } = require('./util');
+
 const md = require("markdown-it")
 ({
     html: true,
     linkify: true,
-    highlight: (str, lang) =>
-    {
-        if (lang == 'jsonc') lang = 'json';
-        if (lang && hljs.getLanguage(lang))
-        {
-          try { return hljs.highlight(str, { language: lang }).value; }
-          catch { }
-        }
-        return '';
-    }
+    highlight: highlight
 });
 
 md.use(require('markdown-it-anchor'), { tabIndex: false });
