@@ -56,6 +56,8 @@ const md = require("markdown-it")
     highlight: highlight
 });
 
+let mathjax = require('./mathjax');
+md.use(mathjax);
 md.use(require('markdown-it-anchor'), { tabIndex: false, slugify: slugify });
 
 //
@@ -72,6 +74,7 @@ md.use(require('markdown-it-anchor'), { tabIndex: false, slugify: slugify });
 
     source = readFileSync(htmlHeader) + source;
     let htm = md.render(source);
+    htm += mathjax.style();
 
     // Serve
     let server = http.createServer((req, res) => {
