@@ -1,13 +1,14 @@
 {
   "name": "paged-markdown-3-pdf",
   "version": "0.1.0",
-  "description": "A pdf renderer for paged-markdown-3.",
+  "description": "A PDF-renderer for Paged Markdown 3.",
   "main": "index.js",
   "bin": {
     "pmd-pdf": "index.js"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leso-kn/paged-markdown-3-pdf.git"
   },
   "keywords": [
     "pdf",
@@ -15,12 +16,16 @@
     "pagedmd"
   ],
   "author": "Lesosoftware",
-  "license": "ISC",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/leso-kn/paged-markdown-3-pdf/issues"
+  },
+  "homepage": "https://github.com/leso-kn/paged-markdown-3-pdf#readme",
   "dependencies": {
     "hangersteak": "^0.2.12",
-    "highlight.js": "^11.5.1",
+    "highlight.js": "^11.6.0",
     "markdown-it": "^13.0.1",
-    "markdown-it-anchor": "^8.6.4",
+    "markdown-it-anchor": "^8.6.5",
     "markdown-it-mathjax-chtml": "^0.3.0",
     "puppeteer-core": "^15.2.0"
   }
