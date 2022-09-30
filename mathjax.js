@@ -1,6 +1,6 @@
 /*
  *  mathjax – Paged Markdown 3 PDF Renderer
- *  by Lesosoftware, 2022
+ *  Lesosoftware 2022
  */
 
 let mathjax = require('markdown-it-mathjax-chtml')({ });

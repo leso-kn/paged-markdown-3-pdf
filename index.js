@@ -2,7 +2,7 @@
 
 /*
  *  Paged Markdown 3 PDF Renderer
- *  by Lesosoftware, 2022
+ *  Lesosoftware 2022
  */
 
 const { readFileSync, existsSync } = require('fs');
@@ -103,6 +103,7 @@ md.use(require('markdown-it-anchor'), { tabIndex: false, slugify: slugify });
     await page.goto(`http://localhost:${server.address().port}/${filename}`);
 
     await new Promise(r => page.once('console', r));
+    //await new Promise(r => setTimeout(r, 1000));
     await page.pdf({ path: output, preferCSSPageSize: true });
 
     server.close();

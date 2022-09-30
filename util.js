@@ -1,6 +1,6 @@
 /*
  *  util – Paged Markdown 3 PDF Renderer
- *  by Lesosoftware, 2022
+ *  Lesosoftware 2022
  */
 
 const hljs = require('highlight.js');
