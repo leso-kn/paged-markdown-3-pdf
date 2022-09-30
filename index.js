@@ -31,13 +31,15 @@ if (process.argv.length <= 2 || !existsSync(filename))
 
 //
 
-const { dirname, basename } = require('path');
+const { dirname, basename, parse, resolve } = require('path');
 let output = dirname(filename) + '/' + basename(filename).replace(/\.[^\.]+$/, '') + '.pdf';
 
 if (process.argv.length > 3) {
     // Optional output-file argument given
     output = process.argv[3];
 }
+
+filename = resolve(filename);
 
 //
 
@@ -78,7 +80,7 @@ md.use(require('markdown-it-anchor'), { tabIndex: false, slugify: slugify });
 
     // Serve
     let server = http.createServer((req, res) => {
-        if (req.url == '/')
+        if (req.url == '/' + filename)
         {
             res.setHeader('Content-Type', 'text/html');
             res.write(htm);
@@ -86,7 +88,7 @@ md.use(require('markdown-it-anchor'), { tabIndex: false, slugify: slugify });
             return;
         }
         hangersteak(req, res, {
-            dir: dirname(filename)
+            dir: parse(filename).root
         });
     });
     let listening = new Promise(r => server.once('listening', r));
@@ -98,7 +100,7 @@ md.use(require('markdown-it-anchor'), { tabIndex: false, slugify: slugify });
     const engine = await puppeteer.launch({ executablePath: await which('chromium'), headless: true })
     let page = await engine.newPage();
 
-    await page.goto(`http://localhost:${server.address().port}/`);
+    await page.goto(`http://localhost:${server.address().port}/${filename}`);
 
     await new Promise(r => page.once('console', r));
     await page.pdf({ path: output, preferCSSPageSize: true });
