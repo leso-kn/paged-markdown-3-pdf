@@ -80,7 +80,7 @@ md.use(require('markdown-it-anchor'), { tabIndex: false, slugify: slugify });
 
     // Serve
     let server = http.createServer((req, res) => {
-        if (req.url == '/' + filename)
+        if (decodeURI(req.url) == '/' + filename)
         {
             res.setHeader('Content-Type', 'text/html');
             res.write(htm);
