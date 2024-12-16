@@ -1,6 +1,6 @@
 {
   "name": "paged-markdown-3-pdf",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A PDF-renderer for Paged Markdown 3.",
   "main": "index.js",
   "bin": {
